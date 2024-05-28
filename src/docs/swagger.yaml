@@ -1,0 +1,199 @@
+swagger: "3.0"
+info:
+  title: Cat planet
+  description: No description
+  version: v0.0.1
+schemes:
+  - https
+paths:
+  /authenticate:
+    post:
+      summary: (Sample) Get login token
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Authentication
+  /users/open_game:
+    get:
+      summary: check user can open game to play
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      tags:
+        - User
+  /characters:
+    get:
+      summary: get all your nfts
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Character
+  /characters/choose:
+    post:
+      summary: select a new nft to play
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              characterId:
+                type: number
+          required: true
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Character
+  /users/characters:
+    get:
+      summary: get full info of nft
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /master_data:
+    get:
+      summary: get all data when first login game
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Data
+  /characters/settings:
+    put:
+      summary: update settings ingame
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: body
+          name: isAuto
+          schema:
+            type: object
+            properties:
+              isAuto:
+                type: boolean
+          required: true
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Character
+  /characters/location:
+    put:
+      summary: update location of character
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              x:
+                type: number
+              "y":
+                type: number
+              z:
+                type: number
+          required: true
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Character
+  /users/exit_game:
+    get:
+      summary: user exit current game
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /users/check_game:
+    get:
+      summary: check should kick this user
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /users/items:
+    get:
+      summary: get list inventories of user
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /users/characters/last_online:
+    get:
+      summary: get last online character id
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /quests:
+    get:
+      summary: get all quests
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Quest
+    post:
+      summary: complete a quest
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              id:
+                type: number
+          required: true
+      responses:
+        "200":
+          description: OK
+      tags:
+        - Quest
+
+# Define the security scheme type (HTTP bearer)
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
+
+# Apply the security globally to all operations
+security:
+  - bearerAuth: [] # use the same name as above
