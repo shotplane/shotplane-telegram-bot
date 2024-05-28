@@ -144,6 +144,10 @@ class LogHelper {
   static logString = (content: string, link: string) => {
     console.log(chalk.yellow(content) + " : " + chalk.redBright(link));
   };
+
+  static log = (content: string) => {
+    console.log(chalk.yellow(content));
+  };
 }
 
 

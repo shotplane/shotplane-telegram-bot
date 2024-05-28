@@ -2,6 +2,8 @@ import express from "express";
 import { LogHelper, Logger } from "./core/logger";
 import ExpressLoader from "./loaders/express.loader";
 import ApolloServerLoader from "./graphql";
+import TelegramLoader from "./loaders/telegram.loader";
+
 
 class Server {
   constructor() {
@@ -17,6 +19,11 @@ class Server {
     const apolloLoader = new ApolloServerLoader(app);
     apolloLoader.startGraphql();
 
+    const telegramLoader = new TelegramLoader();
+    telegramLoader.runMain();
+    telegramLoader.doTest();
+
+
     app.listen(app.get("port"), () => {
       LogHelper.logString(
         `\n🚀 Graphql is running in ${app.get("env")} mode at`,
@@ -30,6 +37,7 @@ class Server {
       console.log("  Press CTRL-C to stop\n");
     });
 
+
   }
 }
 
@@ -37,4 +45,5 @@ class Server {
 new Server();
 import "./init";
 import "./scheduler";
-import "./loaders/contract.loader";
+import { env } from "process";import { configs } from "./configs";
+

@@ -7,5 +7,6 @@ export default {
   app1db: process.env["APP1_DB_URI"],
   adminAccount: process.env["ADMIN_ACCOUNT"],
   adminPrivateKey: process.env["ADMIN_PRIVATE_KEY"],
+  telegramBotKey: process.env["TELEGRAM_BOT_KEY"],
   debug: false,
 };
