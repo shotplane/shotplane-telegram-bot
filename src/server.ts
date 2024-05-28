@@ -21,7 +21,6 @@ class Server {
 
     const telegramLoader = new TelegramLoader();
     telegramLoader.runMain();
-    telegramLoader.doTest();
 
 
     app.listen(app.get("port"), () => {
