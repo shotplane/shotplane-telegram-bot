@@ -8,5 +8,6 @@ export default {
   adminAccount: process.env["ADMIN_ACCOUNT"],
   adminPrivateKey: process.env["ADMIN_PRIVATE_KEY"],
   telegramBotKey: process.env["TELEGRAM_BOT_KEY"],
+  telegramApiRoot: process.env["TELEGRAM_API_ROOT"],
   debug: false,
 };

@@ -1,13 +1,12 @@
 import { configs } from "../configs"
 import TelegramBot from 'node-telegram-bot-api';
-
 import { LogHelper } from "../core/logger"
 
 
 class TelegramLoader {
     bot: TelegramBot
     constructor() {
-        this.bot = new TelegramBot(configs.telegramBotKey, { polling: true })
+        this.bot = new TelegramBot(configs.telegramBotKey, { baseApiUrl: configs.telegramApiRoot, polling: true })
     }
 
 
@@ -45,6 +44,7 @@ class TelegramLoader {
                     },
                 });
             });
+            this.bot.on("polling_error", (msg) => console.log(msg.message));
         } catch (error) {
 
         }
