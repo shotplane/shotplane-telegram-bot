@@ -11,7 +11,11 @@ import path from "path"
 class TelegramLoader {
     bot: Telegraf
     constructor() {
-        this.bot = new Telegraf(configs.telegramBotKey)
+        this.bot = new Telegraf(configs.telegramBotKey,{
+            telegram:{
+                apiRoot: "https://api.telegram.org"
+            }
+        })
     }
 
     launch() {
@@ -57,7 +61,7 @@ class TelegramLoader {
         try {
             LogHelper.log(`\n🚀 Telegram bot is running in ${configs.env} mode\n`);
             this.bot.start((ctx) => {
-                this.createMainContent(ctx);
+                // this.createMainContent(ctx);
             });
             this.bot.launch();
         } catch (error) {
