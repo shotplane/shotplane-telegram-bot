@@ -34,8 +34,9 @@ class TelegramLoader {
                             ],
                             [
                                 { text: '🌐 Website', url: "https://www.shotplane.org/" },
-                                { text: 'Join community', url: "https://www.x.com/shotplane" },
+                                { text: 'Join community', url: "https://t.me/shotplane" },
                             ], [
+                                { text: '𝕏', url: "https://x.com/Shotplaneorg" },
                                 { text: '👬 Invite a friend', url: "https://t.me/share/url?url=https://t.me/shotplane_bot" },
                             ]
                         ]
