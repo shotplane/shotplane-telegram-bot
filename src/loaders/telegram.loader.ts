@@ -18,7 +18,7 @@ class TelegramLoader {
             LogHelper.log(`\n🚀 Telegram bot is running in ${configs.env} mode\n`);
             this.bot.onText(/\/start/, (msg) => {
                 const chatId = msg.chat.id;
-                this.bot.sendPhoto(chatId, "https://game.shotplane.org/images/game.webp", {
+                this.bot.sendPhoto(chatId, "https://game.shotplane.org/images/shotplane.jpg", {
                     caption: `<b>🌊 Welcome to the Shot plane 🌊</b> 
                     
 🚀 Let the adventure begin! 🚀`,
